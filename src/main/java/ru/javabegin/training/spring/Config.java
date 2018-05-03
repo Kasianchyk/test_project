@@ -1,12 +1,10 @@
 package ru.javabegin.training.spring;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ru.javabegin.training.spring.aop.postprocessors.TransactionAspect;
 
 
 import javax.sql.DataSource;
@@ -14,6 +12,7 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = "ru.javabegin.training.spring")
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class Config {
 
     @Bean
@@ -33,4 +32,5 @@ public class Config {
         transactionManager.setDataSource(dataSource());
         return transactionManager;
     }
+
 }

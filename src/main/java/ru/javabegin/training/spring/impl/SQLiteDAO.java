@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronization;
@@ -40,7 +41,7 @@ public class SQLiteDAO implements MP3Dao {
     }
 
     @Override
-    @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional(propagation = Propagation.REQUIRED, timeout = 1)
     public int insertMp3(MP3 mp3) {
         System.out.println(TransactionSynchronizationManager.isActualTransactionActive());
 
@@ -56,7 +57,7 @@ public class SQLiteDAO implements MP3Dao {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
     public int insertSinger(Singer singer) {
         System.out.println(TransactionSynchronizationManager.isActualTransactionActive());
 

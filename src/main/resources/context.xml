@@ -9,6 +9,8 @@
 
 	<context:component-scan base-package="ru.javabegin.training.spring.*" />
 	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+
 	
 	
 
