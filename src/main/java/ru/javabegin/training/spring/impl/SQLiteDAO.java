@@ -43,7 +43,6 @@ public class SQLiteDAO implements MP3Dao {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, timeout = 1)
     public int insertMp3(MP3 mp3) {
-        System.out.println(TransactionSynchronizationManager.isActualTransactionActive());
 
 
         int singer_id = insertSinger(mp3.getSinger());
@@ -59,7 +58,7 @@ public class SQLiteDAO implements MP3Dao {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
     public int insertSinger(Singer singer) {
-        System.out.println(TransactionSynchronizationManager.isActualTransactionActive());
+        //System.out.println(TransactionSynchronizationManager.isActualTransactionActive());
 
         String insertSqlSinger = "insert into singer (name) values(:name)";
         MapSqlParameterSource params = new MapSqlParameterSource();

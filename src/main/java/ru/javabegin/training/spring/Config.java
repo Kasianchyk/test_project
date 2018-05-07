@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 public class Config {
 
     @Bean
-    @Lazy
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

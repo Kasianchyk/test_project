@@ -12,10 +12,10 @@ public class Main {
 
 
         MP3 mp3 = new MP3();
-        mp3.setName("Simple song");
+        mp3.setName("New song 2");
 
         Singer singer = new Singer();
-        singer.setFirstName("Android");
+        singer.setFirstName("Nika");
         mp3.setAuthor(singer);
 
 
